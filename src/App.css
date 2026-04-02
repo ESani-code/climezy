@@ -20,3 +20,51 @@
         grid-template-columns: repeat(1, 1fr);
     }
 }
+
+
+
+
+
+
+ 
+/* Wrapper gives the card a remove button without touching WeatherCard itself */
+.weather-card-wrapper {
+  position: relative;
+}
+ 
+.weather-card-remove {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  z-index: 10;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(0, 0, 0, 0.35);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+  backdrop-filter: blur(4px);
+}
+ 
+/* Show on hover of the wrapper */
+.weather-card-wrapper:hover .weather-card-remove {
+  opacity: 1;
+}
+ 
+.weather-card-remove:hover {
+  background-color: rgba(239, 68, 68, 0.6);
+  color: #ffffff;
+  border-color: rgba(239, 68, 68, 0.5);
+}
+ 
+.weather-card-remove:active {
+  transform: scale(0.9);
+}
+ 
