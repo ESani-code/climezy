@@ -1,0 +1,309 @@
+/* ================================================================
+   WeatherCardStates.css
+   Skeleton (loading) + Error states for WeatherCard
+   Matches Climezy dark navy / frosted glass design system
+   ================================================================ */
+
+/* ── Shared card shell ─────────────────────────────────────────── */
+.weather-card-skeleton,
+.weather-card-error {
+  position: relative;
+  width: 100%;
+  min-height: 13rem;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  box-sizing: border-box;
+}
+
+/* ================================================================
+   SKELETON — Loading State
+   ================================================================ */
+
+.weather-card-skeleton {
+  background-color: rgba(0, 28, 65, 0.6);
+  animation: skeleton-breathe 3s ease-in-out infinite;
+}
+
+@keyframes skeleton-breathe {
+  0%, 100% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255,255,255,0.05); }
+  50%       { box-shadow: 0 8px 48px rgba(96, 165, 250, 0.12), inset 0 1px 0 rgba(255,255,255,0.08); }
+}
+
+/* Frosted overlay */
+.wcs__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 30, 70, 0.5) 0%,
+    rgba(0, 12, 40, 0.68) 100%
+  );
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: 0;
+}
+
+.wcs__content {
+  position: relative;
+  z-index: 1;
+  padding: 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* ── Shimmer base ──────────────────────────────────────────────── */
+.wcs__shimmer {
+  border-radius: 6px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(255, 255, 255, 0.11) 40%,
+    rgba(96, 165, 250, 0.1)  60%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  background-size: 300% 100%;
+  animation: shimmer-sweep 2.2s ease-in-out infinite;
+}
+
+/* Each shimmer bar gets a staggered delay for a wave effect */
+.wcs__shimmer--label    { animation-delay: 0s;    width: 3.5rem;  height: 1rem;   }
+.wcs__shimmer--timezone { animation-delay: 0.1s;  width: 3rem;    height: 0.75rem;}
+.wcs__shimmer--temp     { animation-delay: 0.2s;  width: 6rem;    height: 3.75rem; border-radius: 8px; }
+.wcs__shimmer--icon     { animation-delay: 0.3s;  width: 2.75rem; height: 2.75rem; border-radius: 50%; }
+.wcs__shimmer--clock    { animation-delay: 0.15s; width: 7rem;    height: 3.25rem; border-radius: 8px; }
+.wcs__shimmer--condition{ animation-delay: 0.25s; width: 5rem;    height: 1.1rem; }
+.wcs__shimmer--range    { animation-delay: 0.35s; width: 8rem;    height: 0.75rem; margin-top: 0.25rem; }
+.wcs__shimmer--location { animation-delay: 0.2s;  width: 5.5rem;  height: 0.875rem; }
+
+@keyframes shimmer-sweep {
+  0%   { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+/* ── Layout rows ───────────────────────────────────────────────── */
+.wcs__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wcs__middle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  padding: 0.5rem 0;
+}
+
+.wcs__temp-block {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.wcs__bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: 0.25rem;
+}
+
+.wcs__condition-block {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Pulse orb — atmospheric detail ───────────────────────────── */
+.wcs__pulse-orb {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(96, 165, 250, 0.07) 0%, transparent 70%);
+  animation: orb-pulse 2.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes orb-pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(0.85); opacity: 0.4; }
+  50%       { transform: translate(-50%, -50%) scale(1.3);  opacity: 0.9; }
+}
+
+/* ================================================================
+   ERROR STATE
+   ================================================================ */
+
+.weather-card-error {
+  background-color: rgba(30, 10, 15, 0.65);
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+/* Frosted overlay with a faint red tint */
+.wce__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(60, 10, 20, 0.52) 0%,
+    rgba(10, 5, 25, 0.72) 100%
+  );
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: 0;
+}
+
+.wce__content {
+  position: relative;
+  z-index: 1;
+  padding: 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* Top row */
+.wce__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wce__label {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.01em;
+}
+
+.wce__location {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.04em;
+}
+
+/* Body — icon + text */
+.wce__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+/* Icon with animated ring */
+.wce__icon-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.wce__icon {
+  font-size: 2rem;
+  color: rgba(239, 68, 68, 0.75);
+  filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.35));
+  animation: error-icon-float 3s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes error-icon-float {
+  0%, 100% { transform: translateY(0);    opacity: 0.75; }
+  50%       { transform: translateY(-4px); opacity: 1;    }
+}
+
+.wce__icon-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid rgba(239, 68, 68, 0.25);
+  animation: error-ring-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes error-ring-pulse {
+  0%, 100% { transform: scale(1);    opacity: 0.4; }
+  50%       { transform: scale(1.35); opacity: 0;   }
+}
+
+.wce__message {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.wce__sub {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.35);
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+/* Retry button */
+.wce__bottom {
+  display: flex;
+  justify-content: center;
+}
+
+.wce__retry-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 1.1rem;
+  border-radius: 5px;
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  background-color: rgba(239, 68, 68, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.wce__retry-btn:hover {
+  background-color: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.6);
+  color: #ffffff;
+}
+
+.wce__retry-btn:active {
+  transform: scale(0.95);
+}
+
+.wce__retry-btn .bi-arrow-clockwise {
+  font-size: 0.875rem;
+  transition: transform 0.4s ease;
+}
+
+.wce__retry-btn:hover .bi-arrow-clockwise {
+  transform: rotate(180deg);
+}
+
+/* ── Responsive ────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .wcs__content,
+  .wce__content {
+    padding: 1.25rem 1.25rem;
+  }
+
+  .wcs__shimmer--temp  { width: 4.5rem; height: 2.75rem; }
+  .wcs__shimmer--clock { width: 5rem;   height: 2.5rem;  }
+}
