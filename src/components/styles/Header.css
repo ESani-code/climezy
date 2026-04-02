@@ -1,11 +1,6 @@
-
 /* Top Navigation Bar */
 .top-nav {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 1.5rem;
+  width: 100%;
   background-color: rgba(0, 35, 70, 0.8);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -15,10 +10,22 @@
   position: sticky;
   top: 0;
   z-index: 50;
+  box-sizing: border-box;
 }
-
+ 
+/* Inner container — constrains content width */
+.top-nav__inner {
+  max-width: 80rem; /* 1280px — adjust to taste */
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+ 
 @media (max-width: 768px) {
-  .top-nav {
+  .top-nav__inner {
     flex-wrap: wrap;
     gap: 0.5rem 0;
     padding-bottom: 1rem;
@@ -30,7 +37,7 @@
     order: 2;
   }
 }
-
+ 
 .logo {
   font-size: 1.25rem;
   font-weight: 700;

@@ -3,22 +3,23 @@
    Matches Climezy design system in index.css
    ============================================= */
 
-.weather-card {
-  position: relative;
-  width: 100%;
-  min-height: 13rem;
-  border-radius: 1.25rem;
-  overflow: hidden;
-  background-color: rgba(0, 45, 100, 0.55);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.45),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-              box-shadow 0.35s ease;
+.weather-card {  
+    position: relative;
+    margin: 1rem auto;
+    width: 90%;
+    min-height: 13rem;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    background-color: rgba(0, 45, 100, 0.55);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                box-shadow 0.35s ease;
 }
 
 .weather-card:hover {
@@ -27,6 +28,14 @@
     0 20px 48px rgba(0, 0, 0, 0.55),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
+
+@media (min-width: 1024px) {
+    .weather-card {
+        width: 100%;
+    }
+}
+
+
 
 /* Frosted glass tinted overlay */
 .weather-card__overlay {
