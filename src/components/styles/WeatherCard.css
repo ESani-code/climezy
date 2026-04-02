@@ -1,0 +1,193 @@
+/* =============================================
+   WeatherCard — Frosted Glass / Dark Navy Theme
+   Matches Climezy design system in index.css
+   ============================================= */
+
+.weather-card {  
+    position: relative;
+    margin: 1rem auto;
+    width: 90%;
+    min-height: 13rem;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    background-color: rgba(0, 45, 100, 0.55);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                box-shadow 0.35s ease;
+}
+
+.weather-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 20px 48px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+@media (min-width: 1024px) {
+    .weather-card {
+        width: 100%;
+    }
+}
+
+
+
+/* Frosted glass tinted overlay */
+.weather-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 30, 70, 0.55) 0%,
+    rgba(0, 15, 45, 0.72) 100%
+  );
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: 0;
+}
+
+/* Content sits above overlay */
+.weather-card__content {
+  position: relative;
+  z-index: 1;
+  padding: 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* ── Top row: "Today" label + timezone ── */
+.weather-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.weather-card__label {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.01em;
+}
+
+.weather-card__timezone {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.04em;
+}
+
+/* ── Middle row: temp + weather icon | clock ── */
+.weather-card__middle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.weather-card__temp-block {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.weather-card__temp {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.weather-card__icon {
+  font-size: 2.75rem;
+  color: var(--color-sunny, #f59e0b);
+  filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.45));
+  line-height: 1;
+  transition: transform 0.4s ease;
+}
+
+.weather-card:hover .weather-card__icon {
+  transform: rotate(15deg) scale(1.1);
+}
+
+/* Clock */
+.weather-card__clock {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  text-align: right;
+  opacity: 0.92;
+}
+
+/* ── Bottom row: condition block | location ── */
+.weather-card__bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: 0.25rem;
+}
+
+.weather-card__condition-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.weather-card__condition {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.weather-card__range {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.01em;
+}
+
+.weather-card__location {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  text-align: right;
+  letter-spacing: 0.01em;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .weather-card__content {
+    padding: 1.25rem 1.25rem;
+  }
+
+  .weather-card__temp {
+    font-size: 3rem;
+  }
+
+  .weather-card__icon {
+    font-size: 2rem;
+  }
+
+  .weather-card__clock {
+    font-size: 2.5rem;
+  }
+
+  .weather-card__condition {
+    font-size: 1rem;
+  }
+
+  .weather-card__location {
+    font-size: 0.875rem;
+  }
+}

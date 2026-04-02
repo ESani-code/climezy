@@ -1,0 +1,22 @@
+.weather-cards{
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0rem 0.8rem;
+    padding: 1rem 1rem;
+}
+
+@media (max-width: 1024px) {
+    .weather-cards {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+
+
+@media (max-width: 768px) {
+    .weather-cards {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
