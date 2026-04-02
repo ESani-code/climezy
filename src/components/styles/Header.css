@@ -1,0 +1,124 @@
+
+/* Top Navigation Bar */
+.top-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background-color: rgba(0, 35, 70, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid var(--color-surface-border);
+  margin-bottom: 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+@media (max-width: 768px) {
+  .top-nav {
+    flex-wrap: wrap;
+    gap: 0.5rem 0;
+    padding-bottom: 1rem;
+  }
+  .logo {
+    order: 1;
+  }
+  .sign-in-up-btn {
+    order: 2;
+  }
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Search Input Module */
+.nav-search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color-search-bg);
+    border: 2px solid var(--color-surface-border);
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.nav-search form {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+input::placeholder {
+    color: var(--color-text-dim);
+}
+
+.nav-search:focus-within {
+  border-color: rgba(96, 165, 250, 0.651); /* rainy accent/blue */
+  box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.2);
+}
+
+@media (max-width: 1024px) {
+  .nav-search {
+    max-width: 45%;
+  }
+  .nav-search input {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-search {
+    order: 3;
+    width: 90vw;
+    max-width: none;
+    box-sizing: border-box;
+    margin-top: 0.5rem;
+  }
+}
+
+.nav-search input {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  padding: 0 0.5rem;
+  font-size: 0.875rem;
+  width: 28rem;
+  transition: width 0.3s ease;
+  color: var(--color-text-dim);
+}
+
+.nav-search input::placeholder {
+  color: var(--color-text-dim);
+}
+
+.nav-search input:focus {
+  width: 30rem;
+}
+
+@media (max-width: 768px) {
+  .nav-search input {
+    width: 100%;
+  }
+  .nav-search input:focus {
+    width: 100%;
+  }
+}
+
+.sign-in-up-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
