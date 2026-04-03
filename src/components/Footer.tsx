@@ -62,9 +62,6 @@ const Footer = () => {
             <h4 className="footer__col-heading">Weather Forecast</h4>
             <ul className="footer__links">
               <li><a href="#" className="footer__link">Search</a></li>
-              <li><a href="#" className="footer__link">Hourly Forecast</a></li>
-              <li><a href="#" className="footer__link">7-Day Forecast</a></li>
-              <li><a href="#" className="footer__link">Air Quality</a></li>
             </ul>
           </div>
 
