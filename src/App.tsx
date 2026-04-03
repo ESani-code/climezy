@@ -1,10 +1,14 @@
 import Header, {type CitySuggestion } from "./components/Header"
 import WeatherCard from "./components/WeatherCard"
 import { WeatherCardSkeleton, WeatherCardError } from "./components/WeatherCardStates"
-import { useQuery } from "@tanstack/react-query"
+import WeatherTable from "./components/WeatherTable"
+import Footer from "./components/Footer"
 
+import { useQuery } from "@tanstack/react-query"
 import { useState, useEffect } from "react"
 import { fetchWeather, weatherCodeMap } from "./services/weather"
+
+
 import './App.css'
 
 interface CityEntry {
@@ -140,6 +144,10 @@ const App = () => {
           <WeatherCardWrapper key={`${c.lat}-${c.lon}`} {...c} onRemove={() => handleRemove(i)} />
         ))}
       </div>
+      
+      <WeatherTable />
+
+      <Footer />
 
 
 
