@@ -268,7 +268,7 @@ const WeatherRow = ({ entry, index, isSelected, onToggleSelect, onToggleFavourit
       </td>
 
       {/* Humidity */}
-      <td className="wt__td">
+      <td className="wt__td wt__hide-on-mobile">
         {isLoading ? <span className="wt__cell-shimmer wt__cell-shimmer--sm" /> :
          isError   ? <span className="wt__cell-error">—</span> :
           <div className="wt__humidity-wrap">
@@ -282,7 +282,7 @@ const WeatherRow = ({ entry, index, isSelected, onToggleSelect, onToggleFavourit
       </td>
 
       {/* Wind */}
-      <td className="wt__td wt__td--dim">
+      <td className="wt__td wt__td--dim wt__hide-on-mobile">
         {isLoading ? <span className="wt__cell-shimmer wt__cell-shimmer--md" /> :
          isError   ? <span className="wt__cell-error">—</span> :
           <span className="wt__td--wind"><i className="bi bi-wind wt__wind-icon" />{live!.wind}</span>
@@ -290,7 +290,7 @@ const WeatherRow = ({ entry, index, isSelected, onToggleSelect, onToggleFavourit
       </td>
 
       {/* Local time */}
-      <td className="wt__td wt__td--time">
+      <td className="wt__td wt__td--time wt__hide-on-mobile">
         {isLoading ? <span className="wt__cell-shimmer wt__cell-shimmer--sm" /> :
          isError   ? <span className="wt__cell-error">—</span> :
                      live!.localTime}
@@ -460,9 +460,9 @@ const WeatherTable = () => {
               <th className="wt__th wt__th--sortable" onClick={() => handleSort('country')}>Country {sortIcon('country')}</th>
               <th className="wt__th wt__th--sortable" onClick={() => handleSort('temp')}>Temp. {sortIcon('temp')}</th>
               <th className="wt__th wt__th--sortable" onClick={() => handleSort('condition')}>Condition {sortIcon('condition')}</th>
-              <th className="wt__th wt__th--sortable" onClick={() => handleSort('humidity')}>Humidity {sortIcon('humidity')}</th>
-              <th className="wt__th">Wind</th>
-              <th className="wt__th wt__th--sortable" onClick={() => handleSort('localTime')}>Local Time {sortIcon('localTime')}</th>
+              <th className="wt__th wt__th--sortable wt__hide-on-mobile" onClick={() => handleSort('humidity')}>Humidity {sortIcon('humidity')}</th>
+              <th className="wt__th wt__hide-on-mobile">Wind</th>
+              <th className="wt__th wt__th--sortable wt__hide-on-mobile" onClick={() => handleSort('localTime')}>Local Time {sortIcon('localTime')}</th>
               <th className="wt__th wt__th--centre">Favourite</th>
             </tr>
           </thead>

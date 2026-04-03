@@ -191,6 +191,25 @@
   padding: 0.55rem 1rem;
 }
 
+
+
+@media (max-width: 1024px) {
+  /* ... your existing mobile rules ... */
+
+  /* 1. Allow the table to shrink to the screen size */
+  .wt__table { 
+    min-width: 100%; 
+  }
+
+  /* 2. Hide the columns you marked */
+  .wt__hide-on-mobile {
+    display: none;
+  }
+}
+
+
+
+
 /* ── Suggestion dropdown ──────────────────────────────────────── */
 .wt__add-search__dropdown {
   margin-top: 0.5rem;
@@ -337,7 +356,7 @@
 .wt__td--dim { color: var(--color-text-secondary); font-size: 0.875rem; }
 .wt__td--city { font-weight: 600; }
 .wt__td--temp { font-weight: 700; font-size: 1rem; letter-spacing: -0.02em; }
-.wt__td--time { font-variant-numeric: tabular-nums; letter-spacing: 0.04em; color: var(--color-text-secondary); }
+.wt__td--time { font-variant-numeric: tabular-nums; letter-spacing: 0.04em; color: var(--color-text-secondary); width: 1%; white-space: nowrap; }
 .wt__td--centre { text-align: center; }
 .wt__td--wind { display: flex; align-items: center; gap: 0.35rem; }
 
