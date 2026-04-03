@@ -1,0 +1,448 @@
+/* ================================================================
+   WeatherTable.css
+   Builds on global table/th/td base in index.css.
+   Uses existing CSS variables and .btn classes — no duplication.
+   ================================================================ */
+
+/* ── Section wrapper ─────────────────────────────────────────── */
+.wt__section {
+  width: 90%;
+  margin: 2.5rem auto 0;
+}
+
+.wt__heading {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: -0.04em;
+  margin-bottom: 1.25rem;
+}
+
+/* ── Toolbar ─────────────────────────────────────────────────── */
+.wt__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+/* ── Tabs ────────────────────────────────────────────────────── */
+.wt__tabs {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-surface-border);
+  border-radius: 6px;
+  padding: 0.2rem;
+}
+
+.wt__tab {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.wt__tab:hover { color: var(--color-text-primary); background-color: var(--color-surface-hover); }
+
+.wt__tab--active { background-color: #3b82f6; color: #ffffff; font-weight: 600; }
+.wt__tab--active:hover { background-color: #2563eb; }
+
+.wt__tab-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  background-color: rgba(255, 255, 255, 0.25);
+  padding: 0.1rem 0.4rem;
+  border-radius: 99px;
+  line-height: 1.4;
+}
+
+/* ── Action buttons ──────────────────────────────────────────── */
+.wt__actions { display: flex; gap: 0.5rem; }
+
+.wt__action-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8125rem;
+}
+
+.wt__action-btn--remove {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transition: opacity 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.wt__action-btn--remove-active {
+  opacity: 1;
+  cursor: pointer;
+  border-color: rgba(239, 68, 68, 0.5) !important;
+  color: rgba(239, 68, 68, 0.85) !important;
+}
+
+.wt__action-btn--remove-active:hover {
+  background-color: rgba(239, 68, 68, 0.12) !important;
+}
+
+/* ================================================================
+   ADD CITY SEARCH PANEL
+   ================================================================ */
+
+.wt__add-search {
+  background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+  border: 1px solid rgba(96, 165, 250, 0.35);
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+  animation: add-panel-drop 0.2s ease-out;
+  position: relative;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+@keyframes add-panel-drop {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.wt__add-search__input-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.wt__add-search__input-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1.5px solid var(--color-surface-border);
+  border-radius: 6px;
+  padding: 0.55rem 0.875rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wt__add-search__input-wrap:focus-within {
+  border-color: rgba(96, 165, 250, 0.6);
+  box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.15);
+}
+
+.wt__add-search__search-icon {
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  flex-shrink: 0;
+}
+
+.wt__add-search__spinner {
+  color: var(--color-rainy);
+  font-size: 0.875rem;
+  flex-shrink: 0;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.wt__add-search__input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--color-text-primary);
+  font-size: 0.9rem;
+  min-width: 0;
+}
+
+.wt__add-search__input::placeholder { color: var(--color-text-secondary); }
+
+.wt__add-search__clear {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  transition: color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.wt__add-search__clear:hover { color: var(--color-text-primary); }
+
+.wt__add-search__cancel {
+  flex-shrink: 0;
+  font-size: 0.8125rem;
+  padding: 0.55rem 1rem;
+}
+
+/* ── Suggestion dropdown ──────────────────────────────────────── */
+.wt__add-search__dropdown {
+  margin-top: 0.5rem;
+  border: 1px solid var(--color-surface-border);
+  border-radius: 6px;
+  overflow: hidden;
+  animation: dropdown-appear 0.15s ease-out;
+  background-color: rgba(0, 28, 65, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+@keyframes dropdown-appear {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.wt__add-search__suggestion {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  transition: background-color 0.12s ease;
+}
+
+.wt__add-search__suggestion:last-child { border-bottom: none; }
+
+.wt__add-search__suggestion:hover,
+.wt__add-search__suggestion--active {
+  background-color: rgba(96, 165, 250, 0.1);
+}
+
+.wt__add-search__geo-icon {
+  font-size: 0.875rem;
+  color: var(--color-rainy);
+  flex-shrink: 0;
+}
+
+.wt__add-search__suggestion-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.wt__add-search__suggestion-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wt__add-search__suggestion-meta {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wt__add-search__suggestion-code {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-rainy);
+  background-color: rgba(96, 165, 250, 0.12);
+  padding: 0.15rem 0.45rem;
+  border-radius: 3px;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.wt__add-search__no-results {
+  margin-top: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--color-surface-border);
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* ================================================================
+   TABLE
+   ================================================================ */
+
+.wt__container {
+  background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.015) 100%);
+  border: 1px solid var(--color-surface-border);
+  border-radius: 1rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.wt__table { min-width: 720px; }
+
+/* Header cells */
+.wt__th { white-space: nowrap; user-select: none; }
+
+.wt__th--sortable { cursor: pointer; transition: color 0.15s ease; }
+.wt__th--sortable:hover { color: var(--color-text-primary); }
+
+.wt__th--check { width: 2.5rem; padding-left: 1.25rem; }
+.wt__th--centre { text-align: center; }
+
+.wt__sort-icon { font-size: 0.7rem; margin-left: 0.3rem; vertical-align: middle; transition: opacity 0.15s ease; }
+.wt__sort-icon--inactive { opacity: 0.3; }
+.wt__sort-icon--active { opacity: 1; color: var(--color-rainy); }
+
+/* ── Rows ────────────────────────────────────────────────────── */
+.wt__row {
+  cursor: pointer;
+  animation: row-fade-in 0.25s ease-out both;
+  transition: background-color 0.15s ease;
+}
+
+.wt__row:hover { background-color: var(--color-surface-hover); }
+
+.wt__row--selected {
+  background-color: rgba(59, 130, 246, 0.08) !important;
+  border-left: 2px solid rgba(59, 130, 246, 0.5);
+}
+
+.wt__row--loading { opacity: 0.7; }
+
+@keyframes row-fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Cells ───────────────────────────────────────────────────── */
+.wt__td { white-space: nowrap; color: var(--color-text-primary); font-size: 0.9rem; }
+.wt__td--check { width: 2.5rem; padding-left: 1.25rem; cursor: default; }
+.wt__td--dim { color: var(--color-text-secondary); font-size: 0.875rem; }
+.wt__td--city { font-weight: 600; }
+.wt__td--temp { font-weight: 700; font-size: 1rem; letter-spacing: -0.02em; }
+.wt__td--time { font-variant-numeric: tabular-nums; letter-spacing: 0.04em; color: var(--color-text-secondary); }
+.wt__td--centre { text-align: center; }
+.wt__td--wind { display: flex; align-items: center; gap: 0.35rem; }
+
+.wt__wind-icon { font-size: 0.75rem; opacity: 0.6; }
+
+/* ── Inline loading shimmer cells ────────────────────────────── */
+.wt__cell-shimmer {
+  display: inline-block;
+  height: 0.875rem;
+  border-radius: 4px;
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.04) 0%,
+    rgba(255,255,255,0.1) 50%,
+    rgba(255,255,255,0.04) 100%
+  );
+  background-size: 300% 100%;
+  animation: shimmer-sweep 1.8s ease-in-out infinite;
+  vertical-align: middle;
+}
+
+.wt__cell-shimmer--sm { width: 3rem; }
+.wt__cell-shimmer--md { width: 5.5rem; }
+
+@keyframes shimmer-sweep {
+  0%   { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+.wt__cell-error { color: rgba(239, 68, 68, 0.6); font-size: 0.8rem; }
+
+/* ── Condition pill ──────────────────────────────────────────── */
+.wt__condition-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.6rem;
+  border-radius: 99px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+/* ── Humidity bar ────────────────────────────────────────────── */
+.wt__humidity-wrap { display: flex; align-items: center; gap: 0.6rem; font-size: 0.875rem; }
+
+.wt__humidity-bar {
+  width: 4rem;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 99px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.wt__humidity-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-rainy), rgba(96, 165, 250, 0.5));
+  border-radius: 99px;
+  transition: width 0.4s ease;
+}
+
+/* ── Star button ─────────────────────────────────────────────── */
+.wt__star {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  padding: 0.25rem 0.4rem;
+  border-radius: 4px;
+  transition: color 0.2s ease, transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  line-height: 1;
+}
+
+.wt__star:hover { color: var(--color-favourite); transform: scale(1.25); }
+.wt__star--filled { color: var(--color-favourite); }
+.wt__star--filled:hover { transform: scale(1.15); }
+
+/* ── Checkbox ────────────────────────────────────────────────── */
+.wt__checkbox { width: 1rem; height: 1rem; accent-color: #3b82f6; cursor: pointer; }
+
+/* ── Empty state ─────────────────────────────────────────────── */
+.wt__empty { text-align: center; padding: 3rem 1rem !important; color: var(--color-text-secondary); font-size: 0.9rem; }
+.wt__empty-icon { display: block; font-size: 2rem; margin-bottom: 0.75rem; opacity: 0.4; }
+
+/* ── Footer ──────────────────────────────────────────────────── */
+.wt__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0.25rem 0;
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
+
+.wt__footer-selected { color: var(--color-rainy); font-weight: 500; }
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .wt__section { width: 95%; }
+  .wt__heading { font-size: 1.5rem; }
+  .wt__toolbar { flex-direction: column; align-items: flex-start; }
+  .wt__actions { width: 100%; justify-content: flex-end; }
+  .wt__humidity-bar { display: none; }
+  .wt__add-search__input-row { flex-direction: column; align-items: stretch; }
+  .wt__add-search__cancel { align-self: flex-end; }
+}
