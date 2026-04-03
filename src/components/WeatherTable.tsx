@@ -1,6 +1,8 @@
 import { useState, useMemo, useEffect, useRef } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { fetchWeather, weatherCodeMap } from '../services/weather'
+import useLocalStorage from '../services/useLocalStorage.ts'   
+
 import './styles/WeatherTable.css'
 
 // ── Types ────────────────────────────────────────────────────────
@@ -313,10 +315,15 @@ const WeatherRow = ({ entry, index, isSelected, onToggleSelect, onToggleFavourit
 // ── WeatherTable ─────────────────────────────────────────────────
 
 const WeatherTable = () => {
-  const [cities, setCities]     = useState<CityEntry[]>(INITIAL_CITIES)
-  const [tab, setTab]           = useState<TabView>('all')
-  const [sortKey, setSortKey]   = useState<SortKey>('id')
-  const [sortDir, setSortDir]   = useState<SortDir>('asc')
+    // Automatically saves cities (including their favourite status) to storage
+  const [cities, setCities] = useLocalStorage<CityEntry[]>('wt_cities', INITIAL_CITIES)
+  
+  // Optional: Save the table state so the user returns to the exact view they left
+  const [tab, setTab] = useLocalStorage<TabView>('wt_tab', 'all')
+  const [sortKey, setSortKey] = useLocalStorage<SortKey>('wt_sort_key', 'id')
+  const [sortDir, setSortDir] = useLocalStorage<SortDir>('wt_sort_dir', 'asc')
+  
+  // Keep selected and showAdd as normal useState (usually you don't want to save selection state across reloads)
   const [selected, setSelected] = useState<Set<number>>(new Set())
   const [showAdd, setShowAdd]   = useState(false)
 
