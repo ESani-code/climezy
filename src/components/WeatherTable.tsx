@@ -399,12 +399,23 @@ const WeatherTable = () => {
   }
 
   // ── Remove selected ──────────────────────────────────────────
-  const handleRemove = () => {
+const handleRemove = () => {
     if (selected.size === 0) return
-    setCities(prev => prev.filter(c => !selected.has(c.id)))
+    
+    setCities(prev => {
+      // 1. Filter out the selected cities
+      const remainingCities = prev.filter(c => !selected.has(c.id))
+      
+      // 2. Re-index the remaining cities sequentially
+      return remainingCities.map((city, index) => ({
+        ...city,
+        id: index + 1 // Reassigns IDs to 1, 2, 3, 4...
+      }))
+    })
+    
+    // Clear the selection state
     setSelected(new Set())
   }
-
   // ── Toggle favourite ─────────────────────────────────────────
   const toggleFavourite = (id: number) => {
     setCities(prev => prev.map(c => c.id === id ? { ...c, favourite: !c.favourite } : c))
